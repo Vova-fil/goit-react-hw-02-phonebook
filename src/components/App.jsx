@@ -1,20 +1,21 @@
+import React from 'react';
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
-//import { Contact } from './Contact/Contact';
+// import Contact from './Contact/Contact';
 // import { Filter } from './Filter/Filter';
-// import { ContactList } from './ContactList/ContactList';
+import { ContactList } from './ContactList/ContactList';
 
 export class App extends Component {
   state = {
     contacts: [
-      // { id: 'id-1', name: 'Тарас Шевченко', number: '+3333333' },
-      // { id: 'id-2', name: 'Ліна костенко', number: '+6666666' },
-      // { id: 'id-3', name: 'Михайло Коцюбинський', number: '+4444444' },
-      // { id: 'id-4', name: 'Іван Франко', number: '+5555555' },
+      { id: 'id-1', name: 'Тарас Шевченко', number: '+3333333' },
+      { id: 'id-2', name: 'Ліна костенко', number: '+6666666' },
+      { id: 'id-3', name: 'Михайло Коцюбинський', number: '+4444444' },
+      { id: 'id-4', name: 'Іван Франко', number: '+5555555' },
     ],
     // filter: '',
-    // name: '',
+    
   };
 
   addContact = ({ contacts, id, name, number }) => {
@@ -33,15 +34,33 @@ export class App extends Component {
     });
   };
 
+  removeContact = id => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(contact => contact.id !== id),
+      };
+    });
+  };
+
   render() {
     // const { filter } = this.state;
     return (
-      <div>
+      <div
+        style={{
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontSize: 40,
+          textTransform: 'uppercase',
+          color: '#010101',
+        }}
+      >
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
         <h2>Contacts</h2>
-        {/* <Filter filter={filter} />
-         <ContactList /> */}
+        {/* <Filter filter={filter} /> */}
+        <ContactList onDelete={this.removeContact} />
       </div>
     );
   }
