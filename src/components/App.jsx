@@ -1,9 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
+// import { Normalizer } from '@testing-library/react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 // import Contact from './Contact/Contact';
-// import { Filter } from './Filter/Filter';
+import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 
 export class App extends Component {
@@ -14,8 +15,7 @@ export class App extends Component {
       { id: 'id-3', name: 'Михайло Коцюбинський', number: '+4444444' },
       { id: 'id-4', name: 'Іван Франко', number: '+5555555' },
     ],
-    // filter: '',
-    
+    filter: '',
   };
 
   addContact = ({ contacts, id, name, number }) => {
@@ -34,6 +34,10 @@ export class App extends Component {
     });
   };
 
+  setFilter = name => {
+    this.setState({ filter: name });
+  };
+
   removeContact = id => {
     this.setState(prevState => {
       return {
@@ -42,12 +46,20 @@ export class App extends Component {
     });
   };
 
+  filterContacts = ({ filter, contacts }) => {
+    const normalizedFilter = filter.toLowerCase();
+
+    return contacts.filter(({ name }) =>
+      name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+
   render() {
-    // const { filter } = this.state;
+    const { filter } = this.state;
     return (
       <div
         style={{
-          height: '100vh',
+          // height: '100vh',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -59,8 +71,11 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
         <h2>Contacts</h2>
-        {/* <Filter filter={filter} /> */}
-        <ContactList onDelete={this.removeContact} />
+        <Filter filter={filter} setFilter={this.setFilter} />
+        <ContactList
+          contacts={this.filterContacts()}
+          onDelete={this.removeContact}
+        />
       </div>
     );
   }
