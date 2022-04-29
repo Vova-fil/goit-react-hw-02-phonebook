@@ -29,8 +29,8 @@
   font-size: 18px;
   width: max-content;
   padding: 5px;
-  color: rgb(19, 61, 248);
-  background-color: rgb(234, 255, 47);
+  color: #fff;
+  background-color: rgb(13, 50, 214);
   border: 3px solid darkslateblue;
   border-radius: 10px;
 }
