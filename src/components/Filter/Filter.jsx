@@ -1,20 +1,22 @@
 import PropTypes from 'prop-types';
-
 import { nanoid } from 'nanoid';
+import s from './Filter.module.css';
 
 export function Filter({ filter, setFilter }) {
   const inputId = nanoid();
 
   return (
-    <>
-      <label htmlFor={inputId}>Find contacts by name</label>
+    <div className={s.filterWrapper}>
+      <label className={s.filterLabel} htmlFor={inputId}>
+        Find contacts by name
+      </label>
       <input
         value={filter}
         onChange={e => setFilter(e.target.value)}
         id={inputId}
         type="text"
       />
-    </>
+    </div>
   );
 }
 

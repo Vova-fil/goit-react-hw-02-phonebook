@@ -41,6 +41,7 @@ export class App extends Component {
   removeContact = id => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id),
+      filter: '',
     }));
   };
 
@@ -58,15 +59,15 @@ export class App extends Component {
     const { filter } = this.state;
     return (
       <div
-        style={{
-          // height: '100vh',
-          // display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          textTransform: 'uppercase',
-          color: '#010101',
-        }}
+      // style={{
+      //   // height: '100vh',
+      //   // display: 'flex',
+      //   justifyContent: 'center',
+      //   alignItems: 'center',
+      //   fontSize: 40,
+      //   textTransform: 'uppercase',
+      //   color: '#010101',
+      // }}
       >
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
