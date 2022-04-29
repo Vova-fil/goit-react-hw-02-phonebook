@@ -39,14 +39,14 @@ export class App extends Component {
   };
 
   removeContact = id => {
-    this.setState(prevState => {
-      return {
-        contacts: prevState.contacts.filter(contact => contact.id !== id),
-      };
-    });
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
   };
 
-  filterContacts = ({ filter, contacts }) => {
+  filterContacts = () => {
+    const filter = this.state.filter;
+    const contacts = this.state.contacts;
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(({ name }) =>
@@ -60,7 +60,7 @@ export class App extends Component {
       <div
         style={{
           // height: '100vh',
-          display: 'flex',
+          // display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           fontSize: 40,

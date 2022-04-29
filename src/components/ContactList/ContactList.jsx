@@ -1,5 +1,5 @@
-import { Contact } from '../Contact/Contact';
 import PropTypes from 'prop-types';
+import { Contact } from '../Contact/Contact';
 import s from './ContactList.module.css';
 
 export function ContactList({ contacts, onDelete }) {
@@ -12,7 +12,7 @@ export function ContactList({ contacts, onDelete }) {
             number={number}
             name={name}
             id={id}
-            onDelete={onDelete}
+            onDelet={onDelete}
           />
         );
       })}
