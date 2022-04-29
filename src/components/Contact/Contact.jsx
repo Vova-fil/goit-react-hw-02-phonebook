@@ -7,7 +7,7 @@ export function Contact({ number, name, id, onDelete }) {
       <span>
         {name}: {number}
       </span>
-      <button className={s.button} type="button" onClick={() => onDelete(id)}>
+      <button className={s.button} type="button" onClick={onDelete}>
         Delete
       </button>
     </li>
