@@ -1,9 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
-// import { Normalizer } from '@testing-library/react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
-// import Contact from './Contact/Contact';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 
@@ -58,17 +56,7 @@ export class App extends Component {
   render() {
     const { filter } = this.state;
     return (
-      <div
-      // style={{
-      //   // height: '100vh',
-      //   // display: 'flex',
-      //   justifyContent: 'center',
-      //   alignItems: 'center',
-      //   fontSize: 40,
-      //   textTransform: 'uppercase',
-      //   color: '#010101',
-      // }}
-      >
+      <div>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
         <h2>Contacts</h2>
@@ -81,20 +69,4 @@ export class App extends Component {
     );
   }
 }
-// export const App = () => {
-//   return (
-//     <div
-//       style={{
-//         height: '100vh',
-//         display: 'flex',
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         fontSize: 40,
-//         textTransform: 'uppercase',
-//         color: '#010101',
-//       }}
-//     >
-//       React homework template
-//     </div>
-//   );
-// };
+
