@@ -12,7 +12,7 @@ export function ContactList({ contacts, onDelete }) {
             number={number}
             name={name}
             id={id}
-            onDelet={() => onDelete(id)}
+            onDelete={() => onDelete(id)}
           />
         );
       })}
